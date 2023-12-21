@@ -19,13 +19,12 @@ defmodule ElixirWordle do
       [yes: "y", no: "n"]
     )
 
-    with :yes <- start_game? do
-      Prompt.display(
+    case start_game? do
+      :yes -> Prompt.display(
         """
           Time to play!
         """
       )
-    else
       _ -> Prompt.display("See you next time!")
     end
   end
