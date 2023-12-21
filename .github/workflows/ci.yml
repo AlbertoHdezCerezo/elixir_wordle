@@ -43,7 +43,7 @@ jobs:
   lint:
     environment: test
     runs-on: ubuntu-latest
-    name: Test on OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    name: Linter on OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
     strategy:
       # Specify the OTP and Elixir versions to use when building
       # and running the workflow steps.
