@@ -21,7 +21,8 @@ defmodule ElixirWordle.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      { :prompt, "~> 0.8.1" }
+      {:prompt, "~> 0.8.1"},
+      {:credo, "~> 1.7.1", only: [:dev, :test], runtime: false}
     ]
   end
 end

@@ -39,3 +39,32 @@ jobs:
 
       - name: Run tests
         run: mix test
+
+  lint:
+    environment: test
+    runs-on: ubuntu-latest
+    name: Test on OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    strategy:
+      # Specify the OTP and Elixir versions to use when building
+      # and running the workflow steps.
+      matrix:
+        # You can check the versions you have locally installed by running
+        # erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().' -noshell
+        otp: ['26']       # Define the OTP version [required]
+        # elixir -v
+        elixir: ['1.15.7']    # Define the elixir version [required]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{matrix.otp}}
+          elixir-version: ${{matrix.elixir}}
+
+      - name: Install dependencies
+        run: mix deps.get
+
+      - name: Run linter
+        run: mix credo --strict
