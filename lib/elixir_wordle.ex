@@ -4,7 +4,7 @@ defmodule ElixirWordle do
 
    This method starts the game loop:
 
-   > mix run -e "ElixirWordle.main"
+   > mix run -e "ElixirWordle.play"
   """
 
   def play do
