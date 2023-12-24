@@ -36,6 +36,7 @@ defmodule ElixirWordle do
       :win -> Prompt.display("[WIN] You guessed the right word!")
       :lose -> Prompt.display("[LOSE] You ran out of guess attempts, game is over")
       _ ->
+        UI.Renderer.render(session)
         Prompt.display("Wrong guess! You have #{session.guesses_limit - length(session.guesses)} attempts left ...")
         session = game_loop(session)
     end
